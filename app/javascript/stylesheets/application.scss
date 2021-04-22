@@ -1,0 +1,28 @@
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
+
+
+.login-form, .forgot-passworrd-form, .change-password-form {
+    width: 340px;
+    margin: 50px auto;
+    font-size: 15px;
+} 
+
+.bg-dark {
+    background-color: #505962 !important;
+}
+
+.welcome-username{
+    padding: 5px;
+    color: white!important;
+}
+
+.welcome-username span{
+    display: inline-flex;
+}
+
+.welcome-username span a{
+    padding: 0px 20px 0px 10px;
+    color: white!important;
+    text-decoration: underline;
+}

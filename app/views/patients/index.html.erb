@@ -1,2 +1,15 @@
-<h1>Patients#index</h1>
-<p>Find me in app/views/patients/index.html.erb</p>
+
+<%= form_for(@company, url: 'patients/update', method: :post, remote: true) do |f| %>
+    <%= f.fields_for :patients do |patient| %>
+    <div class="form-group">
+        <%= patient.text_field :name %>
+        <%= patient.fields_for :daywise_infos do |daywise_info| %>
+            <%= daywise_info.hidden_field :t_date %>
+            <%= daywise_info.text_field :status %>
+        <% end %>
+     </div>
+    <% end %>
+    <%= f.submit %>
+<% end %>
+
+
