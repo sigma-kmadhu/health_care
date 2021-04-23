@@ -1,15 +1,51 @@
-
-<%= form_for(@company, url: 'patients/update', method: :post, remote: true) do |f| %>
-    <%= f.fields_for :patients do |patient| %>
-    <div class="form-group">
-        <%= patient.text_field :name %>
-        <%= patient.fields_for :daywise_infos do |daywise_info| %>
-            <%= daywise_info.hidden_field :t_date %>
-            <%= daywise_info.text_field :status %>
-        <% end %>
-     </div>
+<div class="container-fluid patient_data" style="margin-top: 20px;">
+    <%= form_for(@company, url: 'patients/update', method: :post, remote: true) do |f| %>
+        <% patient_index = 0 %>
+        <div class="form-content">
+            <%= f.fields_for :patients do |patient| %>
+                <div class="form-row">
+                    <div class="col">
+                        <%= patient.label :name, "Patient Name" if patient_index==0 %>
+                        <%= patient.text_field :name, class: "form-control" %>
+                    </div>
+                    <div class="col">
+                        <%= patient.label :insurance_provider, "Insurance Provider" if patient_index==0 %>
+                        <%= patient.text_field :insurance_provider, class: "form-control" %>
+                    </div>
+                    <div class="col">
+                    <%= patient.label :dob, "Date of Birth" if patient_index==0 %>
+                        <%= patient.text_field :dob, class: "form-control" %>
+                    </div>
+                    <div class="col">
+                        <%= patient.label :therapist, "Therapist" if patient_index==0 %>
+                        <%= patient.text_field :therapist, class: "form-control" %>
+                    </div>
+                    <div class="col">
+                        <%= patient.label :admit_date, "Admit Date" if patient_index==0 %>
+                        <%= patient.text_field :admit_date, class: "form-control" %>
+                    </div>
+                    <div class="col">
+                        <%= patient.label :loc, "LOC" if patient_index==0 %>
+                        <%= patient.text_field :loc, class: "form-control" %>
+                    </div>
+                    
+                    <%= patient.fields_for :daywise_infos do |daywise_info| %>
+                        <div class="col">
+                            <% if patient_index==0 %> <label for="t_date"> <span><%= daywise_info.object.t_date %></span></br><span><%= daywise_info.object.t_date.strftime("%A") %></span> </label> <% end %>
+                            <%= daywise_info.text_field :status, class: "form-control daywise_info_status" %>
+                        </div>
+                    <% end %>
+                    <% patient_index += 1 %>
+                </div>
+            <% end %>
+        </div>
+        <div class="form-row form_submit_button">
+            <div class="col">
+                <%= f.submit "Update Patient Records", class: 'btn btn-primary btn-block' %>
+            </div>
+        <div>        
     <% end %>
-    <%= f.submit %>
-<% end %>
+</div>
+<style>
 
-
+</style>
