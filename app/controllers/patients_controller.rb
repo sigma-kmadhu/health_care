@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
   before_action :set_company
+
   def index
     @patinet_status_dd = PatientStatusDd.all.pluck(:name)
   end
@@ -17,6 +18,7 @@ class PatientsController < ApplicationController
 
   private
 
+  # company params with nested attribtes
   def company_params
     params.require(:company).permit(patients_attributes: [
       :id, :name, :insurance_provider, :dob, :therapist, :admit_date, :loc, :company_id, :missing_services,
@@ -24,6 +26,7 @@ class PatientsController < ApplicationController
     ])
   end
 
+  # set current company
   def set_company
     @company = Company.includes(patients: [:daywise_infos]).find(current_user.company_id)
   end
