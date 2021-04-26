@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
+    t.boolean "is_updated", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -44,7 +45,6 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
     t.date "admit_date"
     t.string "loc"
     t.string "missing_services"
-    t.boolean "is_updated", default: false
     t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -7,13 +7,19 @@ class PatientsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @company.update(company_params)
-        @company.patients.update_all(is_updated: true)
-        format.js { flash.now[:notice] = I18n.t 'controller.patient.success' }
-      else
-        format.js { flash.now[:error] = I18n.t 'controller.patient.all_fields' }
+      begin 
+        ActiveRecord::Base.transaction do 
+          if @company.update(company_params)
+            @company.update(is_updated: true)
+            format.js { flash.now[:notice] = I18n.t 'controller.patient.success' }
+          else
+            format.js { flash.now[:error] = I18n.t 'controller.patient.all_fields' }
+          end
+        end
+      rescue ActiveRecord::ActiveRecordError => error
+        format.js { flash.now[:error] = I18n.t 'transaction.error' } 
       end
-    end  
+    end
   end
 
   private

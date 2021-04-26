@@ -8,7 +8,6 @@ class CreatePatients < ActiveRecord::Migration[6.1]
       t.date :admit_date
       t.string :loc
       t.string :missing_services
-      t.boolean :is_updated, default: false
 
       t.references :company, index: true, foreign_key: true
 
