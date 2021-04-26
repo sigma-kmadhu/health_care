@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  controller:
+    patient:
+      all_fields: "Please fill all the fields."
+      success: "The Patients details are succefully update."
+  transaction:
+    error: "Something went wrong. Please try again."

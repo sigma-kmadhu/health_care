@@ -1,0 +1,72 @@
+@import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
+
+
+.login-form, .forgot-passworrd-form, .change-password-form {
+    width: 340px;
+    margin: 50px auto;
+    font-size: 15px;
+} 
+
+.bg-dark {
+    background-color: #505962 !important;
+}
+
+.welcome-username{
+    padding: 5px;
+    color: white!important;
+}
+
+.welcome-username span{
+    display: inline-flex;
+}
+
+.welcome-username span a{
+    padding: 0px 20px 0px 10px;
+    color: white!important;
+    text-decoration: underline;
+}
+
+.patient_data .form-row {
+    margin-left: 0px;
+    flex-wrap: inherit!important;
+}
+.patient_data .form-row .col label{
+    min-height: 35px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 0px 10px;
+}
+
+.patient_data .form-row .col {
+    padding: 3px;
+}
+
+.patient_data .form-row .col .form-control{
+    font-size: 12px!important;
+    width: auto!important;
+}
+
+.patient_data .form-row:nth-child(1) .col .daywise_info_status {
+    margin-top: 3px;
+}
+
+.patient_data .form_submit_button{
+    width: 100%;
+    padding: 20px 10px;
+    background: white;
+}
+
+.patient_data .form_submit_button input{
+    width: 15%!important;
+    float: right;
+}
+
+.patient_data .form-content{
+    max-height: 500px;
+    overflow: scroll;
+}
+
+.error_messages, .success_messages {
+    margin: 1% 5%;
+}
