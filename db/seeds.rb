@@ -7,14 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-company_list = %w[Apollo Fortis AIIMS]
+company_list = [ 'Lenox Hill', 'Mount Sinai' ]
 
 company_list.each do |company|
     company_obj = Company.create(name: company)
-    company_obj.users.create({email: "#{company}@gmail.com", password: 'password', password_confirmation: 'password'})
+    company_obj.users.create({email: "#{company.parameterize}@gmail.com", password: 'password', password_confirmation: 'password'})
     60.times do |index|
         patient_obj = company_obj.patients.create(
-            name: "#{company}_patient_#{index}", insurance_provider: "insurance_#{index}", 
+            name: "#{company.parameterize}_patient_#{index}", insurance_provider: "insurance_#{index}", 
             dob: Date.today-20.day, therapist: "therapist_#{index}", admit_date: Date.today, 
             loc: "LOC_#{index}")
         7.times do |dw|

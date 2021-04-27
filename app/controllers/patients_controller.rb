@@ -10,7 +10,7 @@ class PatientsController < ApplicationController
       begin 
         ActiveRecord::Base.transaction do 
           if @company.update(company_params)
-            @company.update(is_updated: true)
+            @company.update(last_updated_at: DateTime.now)
             format.js { flash.now[:notice] = I18n.t 'controller.patient.success' }
           else
             format.js { flash.now[:error] = I18n.t 'controller.patient.all_fields' }

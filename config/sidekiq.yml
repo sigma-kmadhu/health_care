@@ -1,0 +1,4 @@
+:schedule:
+  user_notification_job:
+    cron: "5 0 * * * America/New_York"
+    class: UserNotificationJob

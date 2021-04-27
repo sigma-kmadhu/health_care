@@ -1,17 +1,17 @@
 development:
-  SMTP_USER_EMAIL: ""
-  SMTP_USER_PASSWORD: ""
-  DATABASE_USERNAME: ""
-  DATABASE_PASSWORD: ""
+  SMTP_USER_EMAIL: "noreply.icbd@gmail.com"
+  SMTP_USER_PASSWORD: "icbdpassword"
+  DATABASE_USERNAME: "postgres"
+  DATABASE_PASSWORD: "postgres"
 
 test:
-  SMTP_USER_EMAIL: ""
-  SMTP_USER_PASSWORD: ""
-  DATABASE_USERNAME: ""
-  DATABASE_PASSWORD: ""
+  SMTP_USER_EMAIL: "noreply.icbd@gmail.com"
+  SMTP_USER_PASSWORD: "icbdpassword"
+  DATABASE_USERNAME: "postgres"
+  DATABASE_PASSWORD: "postgres"
 
 production:
-  SMTP_USER_EMAIL: ""
-  SMTP_USER_PASSWORD: ""
-  DATABASE_USERNAME: ""
-  DATABASE_PASSWORD: ""
+  SMTP_USER_EMAIL: "noreply.icbd@gmail.com"
+  SMTP_USER_PASSWORD: "icbdpassword"
+  DATABASE_USERNAME: "postgres"
+  DATABASE_PASSWORD: "postgres"
