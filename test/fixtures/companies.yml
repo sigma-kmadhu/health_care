@@ -3,9 +3,9 @@
 one:
   id: 1
   name: Company_1
-  is_updated: false
+  last_updated_at: <%= DateTime.now - 7.day %>
 
 two:
   id: 2
   name: Company_2
-  is_updated: false
+  last_updated_at: <%= DateTime.now - 7.day %>

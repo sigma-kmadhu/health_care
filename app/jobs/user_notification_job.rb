@@ -3,7 +3,7 @@ class UserNotificationJob < ApplicationJob
 
   def perform(*args)
     user_list = []
-    un_updated_companies = Company.where(is_updated: false)
+    un_updated_companies = Company.where("last_updated_at < ?", DateTime.now-7.day)
     un_updated_companies.each do |company|
       user_list.push(company.users.pluck(:email))
     end
