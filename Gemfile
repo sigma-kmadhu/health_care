@@ -9,6 +9,7 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.1'
 # gem 'sqlite3', '~> 1.4'
 gem 'pg'
 gem 'devise'
+gem 'sidekiq-scheduler'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets

@@ -1,17 +1,21 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  insurance_provider: MyString
-  dob: 2021-04-21
-  therapist: MyString
-  admit_date: 2021-04-21
-  loc: MyString
+  id: 1
+  name: Patient_1
+  insurance_provider: Insurance_1
+  dob: <%= Date.today - 100.day %>
+  therapist: Therapist_1
+  admit_date: <%= Date.today %>
+  loc: LOC
+  company_id: 1
 
 two:
-  name: MyString
-  insurance_provider: MyString
-  dob: 2021-04-21
-  therapist: MyString
-  admit_date: 2021-04-21
-  loc: MyString
+  id: 2
+  name: Patient_2
+  insurance_provider: Insurance_2
+  dob: <%= Date.today - 100.day %>
+  therapist: Therapist_2
+  admit_date: <%= Date.today %>
+  loc: LOC
+  company_id: 1

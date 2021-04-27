@@ -1,7 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  id: 1
+  name: Company_1
+  is_updated: false
 
 two:
-  name: MyString
+  id: 2
+  name: Company_2
+  is_updated: false
