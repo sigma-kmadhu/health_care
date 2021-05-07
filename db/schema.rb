@@ -15,9 +15,8 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "companies", force: :cascade do |t|
+  create_table "companies", primary_key: "actual_company_id", force: :cascade do |t|
     t.string "name"
-    t.integer "actual_company_id"
     t.datetime "last_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -26,8 +25,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
   create_table "daywise_infos", force: :cascade do |t|
     t.date "t_date"
     t.string "status"
-    t.integer "actual_patient_id"
-    t.bigint "patient_id"
+    t.bigint "patient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["patient_id"], name: "index_daywise_infos_on_patient_id"
@@ -39,7 +37,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "patients", force: :cascade do |t|
+  create_table "patients", primary_key: "actual_patient_id", force: :cascade do |t|
     t.string "name"
     t.string "insurance_provider"
     t.date "dob"
@@ -47,9 +45,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
     t.date "admit_date"
     t.string "loc"
     t.string "missing_services"
-    t.integer "actual_company_id"
-    t.integer "actual_patient_id"
-    t.bigint "company_id"
+    t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_patients_on_company_id"
@@ -61,8 +57,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "actual_company_id"
-    t.bigint "company_id"
+    t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_users_on_company_id"
@@ -70,7 +65,4 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "daywise_infos", "patients"
-  add_foreign_key "patients", "companies"
-  add_foreign_key "users", "companies"
 end
