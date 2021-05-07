@@ -1,8 +1,8 @@
 class CreateCompanies < ActiveRecord::Migration[6.1]
   def change
-    create_table :companies do |t|
+    create_table :companies, id: false do |t|
+      t.primary_key :actual_company_id
       t.string :name
-      t.integer :actual_company_id
       t.datetime :last_updated_at
 
       t.timestamps
