@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
+    t.integer "actual_company_id"
     t.datetime "last_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
   create_table "daywise_infos", force: :cascade do |t|
     t.date "t_date"
     t.string "status"
+    t.integer "actual_patient_id"
     t.bigint "patient_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -45,6 +47,8 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
     t.date "admit_date"
     t.string "loc"
     t.string "missing_services"
+    t.integer "actual_company_id"
+    t.integer "actual_patient_id"
     t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -57,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_04_23_065529) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "actual_company_id"
     t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

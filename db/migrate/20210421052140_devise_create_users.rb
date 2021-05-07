@@ -13,6 +13,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
 
       ## Rememberable
       t.datetime :remember_created_at
+      t.integer :actual_company_id
       t.references :company, index: true, foreign_key: true
 
       ## Trackable
