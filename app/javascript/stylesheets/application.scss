@@ -1,4 +1,5 @@
 @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap-select/sass/bootstrap-select";
 @import url('https://fonts.googleapis.com/css?family=Merriweather:400,700');
 
 
@@ -69,4 +70,18 @@
 
 .error_messages, .success_messages {
     margin: 1% 5%;
+}
+
+.dropdown.bootstrap-select.show-tick.form-control.daywise_info_status{
+    width: 100%!important;
+    max-width: 100%!important;
+    min-width: 100%!important;
+}
+.col.multiselect{
+    width: 100%!important;
+    max-width: 100%!important;
+    min-width: 15%!important;
+}
+.daywise_info_status .filter-option-inner-inner, .bootstrap-select .dropdown-menu li a{
+    font-size: 12px !important;
 }

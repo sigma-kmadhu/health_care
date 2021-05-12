@@ -1,2 +1,0 @@
-class PatientStatusDd < ApplicationRecord
-end

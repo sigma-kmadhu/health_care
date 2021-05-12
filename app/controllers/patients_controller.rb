@@ -1,8 +1,9 @@
 class PatientsController < ApplicationController
+  include PatientsHelper
   before_action :set_company
 
   def index
-    @patinet_status_dd = PatientStatusDd.all.pluck(:name)
+    @loc_services = construct_loc_services
   end
 
   def update
@@ -28,7 +29,7 @@ class PatientsController < ApplicationController
   def company_params
     params.require(:company).permit(patients_attributes: [
       :id, :name, :insurance_provider, :dob, :therapist, :admit_date, :loc, :company_id, :missing_services,
-      daywise_infos_attributes: [:id, :t_date, :status, :patient_id]
+      daywise_infos_attributes: [:id, :t_date, {status:[]}, :patient_id]
     ])
   end
 

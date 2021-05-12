@@ -18,12 +18,18 @@ company_list.each_with_index do |company, index|
         patient_obj = company_obj.patients.create(
             name: "#{company.parameterize}_patient_#{index}", insurance_provider: "insurance_#{index}", 
             dob: Date.today-20.day, therapist: "therapist_#{index}", admit_date: Date.today, 
-            loc: "LOC_#{index}", actual_patient_id: actual_patient_id.to_i)
+            loc: "PHP", actual_patient_id: actual_patient_id.to_i)
         7.times do |dw|
             patient_obj.daywise_infos.create(t_date: Date.today - (dw+1).day)
         end
     end
 end
 
-patient_status_dd = [ 'On Admit','PHP','IOP3','IOP5' ]
-patient_status_dd.each do |dd| PatientStatusDd.create(name: dd) end
+require 'csv'
+loc_services = []
+csv = CSV.foreach("#{Rails.root}/loc_services.csv", :headers => true, :header_converters => lambda { |h| h.try(:downcase) })
+csv.each do |row|
+    loc_services << row.to_hash.symbolize_keys
+end
+LocServiceDd.create(loc_services)
+    

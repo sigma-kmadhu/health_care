@@ -1,6 +1,6 @@
 require "test_helper"
 
-class PatientStatusDdTest < ActiveSupport::TestCase
+class LocServiceDdTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
