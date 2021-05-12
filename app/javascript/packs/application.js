@@ -5,6 +5,7 @@
 
 import Rails from "@rails/ujs"
 import "bootstrap"
+import "bootstrap-select"
 import "../stylesheets/application"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"

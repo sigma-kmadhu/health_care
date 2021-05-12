@@ -1,0 +1,2 @@
+class LocServiceDd < ApplicationRecord
+end
