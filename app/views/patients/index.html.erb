@@ -12,7 +12,7 @@
                         <%= patient.label :insurance_provider, "Insurance Provider" if patient_index==0 %>
                         <%= patient.text_field :insurance_provider, class: "form-control", readonly:true %>
                     </div>
-                    <div class="col">
+                    <div class="col date_field">
                         <%= patient.label :dob, "Date of Birth" if patient_index==0 %>
                         <%= patient.text_field :dob, value: patient.object.dob.try(:strftime, ('%m/%d/%Y')), class: "form-control", readonly:true %>
                         <%= patient.hidden_field :dob, value: patient.object.dob %>
@@ -21,12 +21,12 @@
                         <%= patient.label :therapist, "Therapist" if patient_index==0 %>
                         <%= patient.text_field :therapist, class: "form-control", readonly:true %>
                     </div>
-                    <div class="col">
+                    <div class="col date_field">
                         <%= patient.label :admit_date, "Admit Date" if patient_index==0 %>
                         <%= patient.text_field :admit_date, value: patient.object.admit_date.try(:strftime, ('%m/%d/%Y')), class: "form-control", readonly:true %>
                         <%= patient.hidden_field :admit_date, value: patient.object.admit_date %>
                     </div>
-                    <div class="col">
+                    <div class="col loc">
                         <%= patient.label :loc, "LOC" if patient_index==0 %>
                         <%= patient.text_field :loc, class: "form-control", readonly:true %>
                     </div>

@@ -8,6 +8,7 @@
 
 
 company_list = [ 'Lenox Hill', 'Mount Sinai' ]
+loc_arr = ["IOP3", "IOP5", "OP", "On Admit", "PHP"]
 
 company_list.each_with_index do |company, index|
     actual_company_id = 10 + index
@@ -18,7 +19,7 @@ company_list.each_with_index do |company, index|
         patient_obj = company_obj.patients.create(
             name: "#{company.parameterize}_patient_#{index}", insurance_provider: "insurance_#{index}", 
             dob: Date.today-20.day, therapist: "therapist_#{index}", admit_date: Date.today, 
-            loc: "PHP", actual_patient_id: actual_patient_id.to_i)
+            loc: loc_arr[index%5], actual_patient_id: actual_patient_id.to_i)
         7.times do |dw|
             patient_obj.daywise_infos.create(t_date: Date.today - (dw+1).day)
         end
