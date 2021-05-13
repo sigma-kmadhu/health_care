@@ -77,11 +77,17 @@
     max-width: 100%!important;
     min-width: 100%!important;
 }
-.col.multiselect{
+.col.multiselect, .col.loc, .col.loc input{
     width: 100%!important;
     max-width: 100%!important;
-    min-width: 15%!important;
+    min-width: 11%!important;
 }
+.col.date_field, .col.date_field input{
+    width: 100%!important;
+    max-width: 100%!important;
+    min-width: 8%!important;
+}
+
 .daywise_info_status .filter-option-inner-inner, .bootstrap-select .dropdown-menu li a{
     font-size: 12px !important;
 }
