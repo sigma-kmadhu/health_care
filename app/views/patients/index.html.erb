@@ -28,14 +28,14 @@
                     </div>
                     <div class="col loc">
                         <%= patient.label :loc, "LOC" if patient_index==0 %>
-                        <%= patient.text_field :loc, class: "form-control", readonly:true %>
+                        <%= patient.text_field :loc, class: "form-control", readonly:true, style: "background-color:"+ @loc_services[patient.object.loc][:color] %>
                     </div>
                     
                     <%= patient.fields_for :daywise_infos do |daywise_info| %>
                         <div class="col multiselect">
                             <% if patient_index==0 %> <label for="t_date"> <span><%= daywise_info.object.t_date.strftime('%m/%d/%Y') %></span></br><span><%= daywise_info.object.t_date.strftime("%A") %></span> </label> <% end %>
                             <%#= daywise_info.select(:status, patient.object.construct_loc_services , {include_blank: ""}, { :class => 'form-control selectpicker daywise_info_status' }) %>
-                            <%= daywise_info.select :status, options_for_select(@loc_services[patient.object.loc], :selected => daywise_info.object.status), {}, {:multiple => true, :class => "form-control daywise_info_status selectpicker", :style => "width:450px;" } %>
+                            <%= daywise_info.select :status, options_for_select(@loc_services[patient.object.loc][:services], :selected => daywise_info.object.status), {}, {:multiple => true, :class => "form-control daywise_info_status selectpicker", :style => "width:450px;" } %>
                         </div>
                     <% end %>
                     <% patient_index += 1 %>
