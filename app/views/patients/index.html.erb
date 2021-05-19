@@ -28,7 +28,7 @@
                     </div>
                     <div class="col loc">
                         <%= patient.label :loc, "LOC" if patient_index==0 %>
-                        <%= patient.text_field :loc, class: "form-control", readonly:true, style: "background-color:"+ @loc_services[patient.object.loc][:color] %>
+                        <%= patient.text_field :loc, class: "form-control", readonly:true, style: "background-color:"+ @loc_services[patient.object.loc][:color].to_s %>
                     </div>
                     
                     <%= patient.fields_for :daywise_infos do |daywise_info| %>
