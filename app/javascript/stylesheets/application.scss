@@ -54,18 +54,19 @@
 }
 
 .patient_data .form_submit_button{
-    width: 100%;
+    width: auto;
+    float: right;
     padding: 20px 10px;
     background: white;
 }
 
 .patient_data .form_submit_button input{
-    width: 13%!important;
     float: right;
 }
 
-.patient_data .form-check-box {
-    width: 100%;
+.input-label {
+    float: left;
+    margin-top: 22px;
 }
 
 .patient_data .form-content{

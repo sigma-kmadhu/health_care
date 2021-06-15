@@ -42,8 +42,10 @@
                 </div>
             <% end %>
         </div>
-        <label class="form-check-box">Please check the box to agree that once data is submitted, Data will not be available for any edits or change</label>
-        <input class="form-check-box" type="checkbox"></input>
+        <div class="input-label">
+            <input class="form-check-box" type="checkbox"></input>
+            <label class="form-check-box">Please check the box to agree that once data is submitted, Data will not be available for any edits or change</label>
+       </div>
         <div class="form-row form_submit_button">
             <div class="col">
                 <%= f.submit "Submit Data", class: 'btn btn-primary btn-block' %>
