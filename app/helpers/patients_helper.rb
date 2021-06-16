@@ -1,3 +1,5 @@
+require 'csv'
+
 module PatientsHelper
     # cache removed since the loc will be keep changing in DB by ETL team in postgres directly
     def construct_loc_services
@@ -17,5 +19,32 @@ module PatientsHelper
 
     def reject_empty_from_array(array_obj)
         array_obj.reject { |e| e.to_s.empty? }
+    end
+
+    # create new patient report after submit
+    def init_patients_report
+        file_path = File.join(Rails.root, "tmp/patient_report_#{Time.now.to_i}.csv")
+        headers = ['Patient Name', 'Insurance Provide', 'Date Of Birth', 'Therapist', 'Admit Date', 'LOC']
+        @company.patients.first.daywise_infos.each do |daywise_info|
+            headers << "#{daywise_info.t_date.strftime('%m/%d/%Y')} (#{daywise_info.t_date.strftime("%A")})"
+        end
+        csv_file = CSV.open(file_path, 'wb') do |csv|
+            csv << headers
+        end
+        csv_file
+    end
+
+    def construct_report_records(report)
+        report_path = report.path
+        CSV.open(report_path, 'ab') do |csv|
+            @company.patients.each do |patient|
+                content = ["#{patient.name}", "#{patient.insurance_provider}", "#{patient.dob.strftime('%m/%d/%Y')}", "#{patient.therapist}", "#{patient.admit_date.strftime('%m/%d/%Y')}", "#{patient.loc}"]
+                patient.daywise_infos.each do |daywise_info|
+                    content << daywise_info.status.split(',').join(',')
+                end
+                csv << content
+            end
+        end
+        return report
     end
 end

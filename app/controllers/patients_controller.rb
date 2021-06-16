@@ -12,6 +12,11 @@ class PatientsController < ApplicationController
         ActiveRecord::Base.transaction do 
           if @company.update(company_params)
             @company.update(last_updated_at: DateTime.now)
+            # create csv with headers
+            report = init_patients_report
+            # import updated patient details into csv
+            construct_report_records(report)
+            UserMailer.notify_company(current_user, @company, report).deliver
             format.js { flash.now[:notice] = I18n.t 'controller.patient.success' }
           else
             format.js { flash.now[:error] = I18n.t 'controller.patient.all_fields' }
