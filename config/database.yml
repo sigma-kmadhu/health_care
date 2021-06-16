@@ -10,6 +10,8 @@ default: &default
   pool: 5
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: localhost
+  port: 5432
 
 development:
   <<: *default
@@ -24,4 +26,4 @@ test:
 
 production:
   <<: *default
-  database: health_care_production
+  database: health_care_development
