@@ -34,6 +34,6 @@ en:
   controller:
     patient:
       all_fields: "Please fill all the fields."
-      success: "The Patients details are succefully update."
+      success: "The Patients details are succefully update and an Email has been Sent"
   transaction:
     error: "Something went wrong. Please try again."
