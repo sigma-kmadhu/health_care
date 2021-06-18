@@ -11,13 +11,15 @@ class PatientsController < ApplicationController
       begin 
         ActiveRecord::Base.transaction do 
           if @company.update(company_params)
-            @company.update(last_updated_at: DateTime.now)
+            submit_value = params[:commit] == "Save For Later" ? false : true
+            @company.update(last_updated_at: DateTime.now, submitted: submit_value)
             # create csv with headers
             report = init_patients_report
             # import updated patient details into csv
             construct_report_records(report)
-            UserMailer.notify_company(current_user, @company, report).deliver
-            format.js { flash.now[:notice] = I18n.t 'controller.patient.success' }
+            UserMailer.notify_company(current_user, @company, report).deliver if submit_value
+            format.js { flash.now[:notice] = I18n.t 'controller.patient.success' } if submit_value
+            format.js { flash.now[:notice] = I18n.t 'controller.patient.saved' } unless submit_value
           else
             format.js { flash.now[:error] = I18n.t 'controller.patient.all_fields' }
           end
@@ -32,7 +34,7 @@ class PatientsController < ApplicationController
 
   # company params with nested attribtes
   def company_params
-    params.require(:company).permit(patients_attributes: [
+    params.require(:company).permit(:submitted, patients_attributes: [
       :id, :name, :insurance_provider, :dob, :therapist, :admit_date, :loc, :company_id, :missing_services,
       daywise_infos_attributes: [:id, :t_date, {status:[]}, :patient_id]
     ])
