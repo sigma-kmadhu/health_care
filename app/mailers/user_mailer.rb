@@ -4,9 +4,8 @@ class UserMailer < ApplicationMailer
     end
 
     # notify user after the data is submitted
-    def notify_company(user, company, report)
-        @user = user
+    def notify_company(company, report)
         attachments["#{company.name}_Updated_Patients_Report.csv"] = File.read(report.path) unless report.blank?
-        mail(to: user.email, subject: 'Updated Patients Details')
+        mail(to: "jcabrera@icbdholdings.com", subject: 'Updated Patients Details')
     end
 end
