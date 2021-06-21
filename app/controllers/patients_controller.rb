@@ -17,7 +17,7 @@ class PatientsController < ApplicationController
             report = init_patients_report
             # import updated patient details into csv
             construct_report_records(report)
-            UserMailer.notify_company(current_user, @company, report).deliver if submit_value
+            UserMailer.notify_company(@company, report).deliver if submit_value
             format.js { flash.now[:notice] = I18n.t 'controller.patient.success' } if submit_value
             format.js { flash.now[:notice] = I18n.t 'controller.patient.saved' } unless submit_value
           else
