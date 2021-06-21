@@ -62,6 +62,7 @@
 <script>
     $(function () {
         $('select').selectpicker();
+        $('.form_submit_button input.submit-button').attr('disabled', true)
     });
     $('input.form-check-box').click(function (){
         if ($('input.form-check-box').prop('checked') == true){
