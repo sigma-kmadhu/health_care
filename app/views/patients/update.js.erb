@@ -8,4 +8,8 @@ $(".error_messages").hide();
 <% if flash[:notice] %>
     $(".success_messages").fadeIn('slow')
     $(".success_messages").html("<%= flash[:notice] %>");
+    setTimeout(function(){ 
+    $('.form_submit_button input.submit-button').attr('disabled', true);
+    $('input.form-check-box').prop('checked', false)
+    }, 10);
 <% end %>
