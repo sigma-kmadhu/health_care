@@ -1,0 +1,9 @@
+<div class="calender-div">
+  
+  <%= form_with url: "/patients/get_date", class: "calender-form", method: :get do |form| %>
+    <p>Last Submitted:<%= @company.last_updated_at.strftime('%m/%d/%Y') %></p>
+    <%= form.label :date, "Select Date:" %>
+    <%= form.date_field :selected_date %>
+    <%= form.submit "Find Records" %>
+  <% end %>
+</div>

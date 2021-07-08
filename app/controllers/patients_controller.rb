@@ -4,9 +4,18 @@ class PatientsController < ApplicationController
 
   def index
     @loc_services = construct_loc_services
+    @from_date = @@selected_dates.to_date
+    @to_date = @from_date + 7.days
   end
 
   def submit_success
+  end
+
+  def get_date
+    @@selected_dates = params[:selected_date]
+    respond_to do |format|
+      format.html {redirect_to patients_url }
+    end
   end
 
   def update
