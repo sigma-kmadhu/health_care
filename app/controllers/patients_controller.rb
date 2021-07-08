@@ -6,20 +6,27 @@ class PatientsController < ApplicationController
     @loc_services = construct_loc_services
   end
 
+  def submit_success
+  end
+
   def update
     respond_to do |format|
       begin 
         ActiveRecord::Base.transaction do 
           if @company.update(company_params)
             submit_value = params[:commit] == "Save For Later" ? false : true
-            @company.update(last_updated_at: DateTime.now, submitted: submit_value)
+            @company.update(submitted: submit_value)
+            submit_value ? @company.update(last_updated_at: DateTime.now) : @company.update(last_saved_at: DateTime.now)
             # create csv with headers
             report = init_patients_report
             # import updated patient details into csv
             construct_report_records(report)
-            UserMailer.notify_company(@company, report).deliver if submit_value
-            format.js { flash.now[:notice] = I18n.t 'controller.patient.success' } if submit_value
-            format.js { flash.now[:notice] = I18n.t 'controller.patient.saved' } unless submit_value
+            if submit_value
+              format.html {redirect_to submit_success_patients_url, notice: "#{I18n.t 'controller.patient.success'}" }
+              UserMailer.notify_company(@company, report).deliver
+            else
+              format.js { flash.now[:notice] = I18n.t 'controller.patient.saved' } unless submit_value
+            end
           else
             format.js { flash.now[:error] = I18n.t 'controller.patient.all_fields' }
           end
