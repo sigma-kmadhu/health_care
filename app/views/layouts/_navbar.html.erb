@@ -15,9 +15,11 @@
       <li class="nav-item welcome-username">
         <span> Hello, <a class="nav-link" href="#"><%= current_user.email %></a> <span>
       </li>
+      <% if Role.find(current_user.role_id).name == 'User' %>
       <li class="nav-item welcome-username">
         <span><b>Last Submitted: </b><%= current_user.company.updated_at %><span>
       </li>
+      <% end %>
       <li class="nav-item">
         <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: 'btn btn-sm btn-warning' %>
       </li>
