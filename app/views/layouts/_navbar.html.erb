@@ -17,7 +17,7 @@
       </li>
       <% if Role.find(current_user.role_id).name == 'User' %>
       <li class="nav-item welcome-username">
-        <span><b>Last Submitted: </b><%= current_user.company.updated_at %><span>
+        <span><b>Last Submitted :&nbsp </b><%= current_user.company.last_updated_at.try(:strftime, ('%m/%d/%Y')) %><span>
       </li>
       <% end %>
       <li class="nav-item">
@@ -26,3 +26,20 @@
     </ul>
   </div>
 </nav>
+
+<script>
+$(".navbar-date").change(function () {
+  var sDate = $('.navbar-date').val();
+  $.ajax({
+    type: "GET",
+    url: "patients/get_date", // the method we are calling
+    data: { selected_date: sDate },
+    success: function (result) {
+        console.log('Yay! It worked!');
+    },
+    error: function (result) {
+        console.log('Oh no :(');
+    }
+  });
+});
+</script>
