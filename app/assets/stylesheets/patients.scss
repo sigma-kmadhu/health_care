@@ -15,12 +15,37 @@
 }
 
 .calender-div{
-  width: 55%;
-  height: 100px;
-  margin-top: 6%;
-  margin-left: 22%;
+         width: 35%;
+    margin: 0 auto;
+    background-color: #e9ecef;
 }
 
 .calender-form{
-  text-align: center;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+        /* background-color: #ffc107; */
+    width: 35%;
+    border-radius: 5px;
+    border: 1px solid #616161;
+}
+.calender-form .sub_text{
+  background-color: #000;color: #fff;padding: 5px 0px;
+    font-weight: 600;margin:0;
+}
+.calender-form .form-inn{
+      padding: 40px 0px;
+}
+.calender-form button, [type="button"], [type="reset"], [type="submit"]{
+          background-color: #ffc107;
+    border: 1px solid #ffffff;
+    color: #000;
+        height: 38px;
+    border-radius: 3px;
+    
+}
+.calender-form #selected_date{
+      height: 38px;
 }
