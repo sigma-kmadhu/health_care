@@ -17,7 +17,6 @@
       </li>
       <% if Role.find(current_user.role_id).name == 'User' %>
       <li class="nav-item welcome-username">
-        <input type="date" class="navbar-date"/>
         <span><b>Last Submitted: </b><%= current_user.company.updated_at %><span>
       </li>
       <% end %>
