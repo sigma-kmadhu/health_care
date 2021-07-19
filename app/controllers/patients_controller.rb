@@ -4,7 +4,7 @@ class PatientsController < ApplicationController
 
   def index
     @loc_services = construct_loc_services
-    @from_date = @@selected_dates.to_date
+    @from_date = @@selected_dates.to_date.beginning_of_week
     @to_date = @from_date + 7.days
   end
 
