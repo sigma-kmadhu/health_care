@@ -38,6 +38,11 @@
 .calender-form .form-inn{
       padding: 40px 0px;
 }
+
+.calender-form .form-inn label{
+    margin-right: 19rem;
+}
+
 .calender-form button, [type="button"], [type="reset"], [type="submit"]{
           background-color: #ffc107;
     border: 1px solid #ffffff;
@@ -47,5 +52,7 @@
     
 }
 .calender-form #selected_date{
-      height: 38px;
+    height: 38px;
+    width: 55%;
 }
+

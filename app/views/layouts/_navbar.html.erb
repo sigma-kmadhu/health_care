@@ -26,20 +26,3 @@
     </ul>
   </div>
 </nav>
-
-<script>
-$(".navbar-date").change(function () {
-  var sDate = $('.navbar-date').val();
-  $.ajax({
-    type: "GET",
-    url: "patients/get_date", // the method we are calling
-    data: { selected_date: sDate },
-    success: function (result) {
-        console.log('Yay! It worked!');
-    },
-    error: function (result) {
-        console.log('Oh no :(');
-    }
-  });
-});
-</script>

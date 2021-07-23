@@ -1,11 +1,12 @@
 <div class="calender-div">
-  <%= form_with url: "/patients/get_date", class: "calender-form", method: :get do |form| %>
+  <%= form_with url: "/patients/get_date", class: "calender-form", method: :get,remote: true do |form| %>
     <p class="sub_text" style="background-color: #000;color: #fff;padding: 5px 0px;
     font-weight: 600;">Last Submitted :&nbsp<%= @company.last_updated_at.try(:strftime, ('%m/%d/%Y')) %></p>
     <div class="form-inn">
-    <%= form.label :date, "Select Date:" %>
-    <%= form.date_field :selected_date, min:  @company.last_updated_at %>
-    <%= form.submit "Find Records" %>
+    <% number_of_days = get_number_weeks(@company) %>
+    <%= form.label :date, "Select Week:" %><br/>
+    <%= form.select :selected_date, options_for_select(number_of_days) %>
+    <%= form.submit "Update Records" %>
   <% end %>
 </div>
 </div>

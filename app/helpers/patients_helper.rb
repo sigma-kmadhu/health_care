@@ -47,4 +47,15 @@ module PatientsHelper
         end
         return report
     end
+
+    def get_number_weeks(company)
+        dates_list = []
+        last_submitted_date = company.last_updated_at.to_date.beginning_of_week
+        today = Date.today
+        dates = (last_submitted_date..today).select{|x| Date::DAYNAMES[x.wday] == Date::DAYNAMES[last_submitted_date.wday] }
+        dates.each do |date|
+            dates_list << ["#{date.strftime('%B %d')} to #{(date+6.days).strftime('%B %d')}", date]
+        end
+        dates_list
+    end
 end
