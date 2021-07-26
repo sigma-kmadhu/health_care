@@ -1,7 +1,6 @@
 $(".success_messages").hide();
 $(".error_messages").hide();
 <% if flash[:notice] %>
-<%byebug%>
     $(".success_messages").fadeIn('slow')
     $(".success_messages").html("<%= flash[:notice] %>");
 <% end %>

@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
     def after_sign_in_path_for(resource)
         if current_user.role.name == 'User'
-            get_calender_patients_path
+            fetch_records_patients_path
         elsif current_user.role.name == 'Admin'
             admins_path
         end

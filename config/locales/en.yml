@@ -34,8 +34,8 @@ en:
   controller:
     patient:
       all_fields: "Please fill all the fields."
-      success: "The Patients details are successfully updated and an Email has been Sent"
-      saved: "The Patients details are successfully Saved for later submission"
-      invalid_dates: "Please submit previous weeks data before the selected week"
+      success: "The Patients details are successfully updated and an Email has been Sent."
+      saved: "The Patients details are successfully Saved for later submission."
+      invalid_dates: "Please submit previous weeks data before proceeding."
   transaction:
     error: "Something went wrong. Please try again."

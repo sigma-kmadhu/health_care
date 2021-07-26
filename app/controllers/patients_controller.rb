@@ -15,7 +15,7 @@ class PatientsController < ApplicationController
     @@selected_dates = params[:selected_date]
     respond_to do |format|
       if @company.last_updated_at.beginning_of_week.to_date == @@selected_dates.to_date
-        format.html {redirect_to patients_url }
+        format.js { render js: "window.location.href = '/patients'"}
       else
         format.js { flash.now[:notice] = I18n.t 'controller.patient.invalid_dates' }
       end
