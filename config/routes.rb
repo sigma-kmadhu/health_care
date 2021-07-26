@@ -7,12 +7,12 @@ Rails.application.routes.draw do
     collection do
       get :submit_success
       get :get_date
-      get :get_calender
+      get :fetch_records
     end
   end
   
   resources :admins
   
-  root to: 'patients#get_calender'
+  root to: 'patients#fetch_records'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
