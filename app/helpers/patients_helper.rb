@@ -22,11 +22,13 @@ module PatientsHelper
     end
 
     # create new patient report after submit
-    def init_patients_report
+    def init_patients_report(from_date)
+        from_date = from_date.to_date.beginning_of_week
+        to_date = from_date + 6.days
         file_path = File.join(Rails.root, "tmp/patient_report_#{Time.now.to_i}.csv")
         headers = ['Patient Name', 'Insurance Provide', 'Date Of Birth', 'Therapist', 'Admit Date', 'LOC']
         @company.patients.first.daywise_infos.each do |daywise_info|
-            headers << "#{daywise_info.t_date.strftime('%m/%d/%Y')} (#{daywise_info.t_date.strftime("%A")})"
+            headers << "#{daywise_info.t_date.strftime('%m/%d/%Y')} (#{daywise_info.t_date.strftime("%A")})" if daywise_info.t_date.between?(from_date.to_time,to_date.to_time)
         end
         csv_file = CSV.open(file_path, 'wb') do |csv|
             csv << headers
@@ -34,13 +36,15 @@ module PatientsHelper
         csv_file
     end
 
-    def construct_report_records(report)
+    def construct_report_records(report, from_date)
+        from_date = from_date.to_date.beginning_of_week
+        to_date = from_date + 6.days
         report_path = report.path
         CSV.open(report_path, 'ab') do |csv|
             @company.patients.each do |patient|
                 content = ["#{patient.name}", "#{patient.insurance_provider}", "#{patient.dob.strftime('%m/%d/%Y')}", "#{patient.therapist}", "#{patient.admit_date.strftime('%m/%d/%Y')}", "#{patient.loc}"]
                 patient.daywise_infos.each do |daywise_info|
-                    content << daywise_info.status.split(',').join(',')
+                    content << daywise_info.status.split(',').join(',') if daywise_info.t_date.between?(from_date.to_time,to_date.to_time)
                 end
                 csv << content
             end
