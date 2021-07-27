@@ -5,7 +5,7 @@ class PatientsController < ApplicationController
   def index
     @loc_services = construct_loc_services
     @from_date = @@selected_dates.to_date.beginning_of_week
-    @to_date = @from_date + 7.days
+    @to_date = @from_date + 6.days
   end
 
   def submit_success
@@ -31,9 +31,9 @@ class PatientsController < ApplicationController
             @company.update(submitted: submit_value)
             submit_value ? @company.update(last_updated_at: DateTime.now) : @company.update(last_saved_at: DateTime.now)
             # create csv with headers
-            report = init_patients_report
+            report = init_patients_report(@@selected_dates)
             # import updated patient details into csv
-            construct_report_records(report)
+            construct_report_records(report,@@selected_dates)
             if submit_value
               format.html {redirect_to submit_success_patients_url, notice: "#{I18n.t 'controller.patient.success'}" }
               UserMailer.notify_company(@company, report).deliver
